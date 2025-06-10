@@ -6,7 +6,8 @@ class Home extends BaseController
 {
     public function index()
     {
-        echo view('front/head_view');
+        $data['titulo']='Pagina principal';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/principal_view');
         echo view('front/comentarios_index_view');
@@ -14,49 +15,56 @@ class Home extends BaseController
     }
      public function comentarios()
     {
-        echo view('front/head_view');
+        $data['titulo']='Comentarios';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/comentarios_view');
         echo view('front/footer_view');
     }
     public function quienes_somos()
     {
-        echo view('front/head_view');
+        $data['titulo']='Quienes somos';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/quienes_somos_view');
         echo view('front/footer_view');
     }
     public function acerca_de()
     {
-        echo view('front/head_view');
+        $data['titulo']='Acerca de';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/acerca_de_view');
         echo view('front/footer_view');
     }
     public function registro()
     {
-        echo view('front/head_view');
+        $data['titulo']='Registro';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
-        echo view('front/registro_view');
+        echo view('back/usuario/registro');
         echo view('front/footer_view');
     }
     public function login()
     {
-        echo view('front/head_view');
+        $data['titulo']='Login';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
-        echo view('front/login_view');
+        echo view('back/usuario/login');
         echo view('front/footer_view');
     }
     public function servicios()
     {
-        echo view('front/head_view');
+        $data['titulo']='Servicios';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/servicios_view');
         echo view('front/footer_view');
     }
     public function contactos()
     {
-        echo view('front/head_view');
+        $data['titulo']='Contactos';
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/contactos_view');
         echo view('front/footer_view');

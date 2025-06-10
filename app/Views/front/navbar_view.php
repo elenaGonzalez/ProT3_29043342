@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <!-- logo marca de la empresa -->
-            <a class="navbar-brand me-auto barra" href="<?php echo base_url('principal') ?>">
+            <a class="navbar-brand me-auto barra" href="<?php echo base_url('principal');?>">
                 <img src="<?php echo base_url('assets/img/tyc_icon.png') ?>"
                     alt="marca" width="50" height="25" class="img-fluid" />
             </a>
@@ -13,7 +13,19 @@
         </button>  
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               
+                <?php if(session()->id_perfil == 1 || session()->id_perfil == 2 ): ?>
+            <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('/panel') ?>">Panel</a>
+                </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="contactos">Contactos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout">Logout</a>
+                </li>
+        <?php else: ?>
+             <li class="nav-item">
                     <a class="nav-link" href="quienes_somos">Quienes Somos</a>
                 </li>
                 <li class="nav-item">
@@ -25,12 +37,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contactos">Contactos</a>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="registro">Registrarse</a>
                 </li>
-                <li class="nav-item">
+            <li class="nav-item">
                     <a class="nav-link" href="login">Login</a>
                 </li>
+            <?php endif; ?>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">

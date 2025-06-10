@@ -20,25 +20,25 @@
   </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/puente.png" class="d-block w-100" alt="puente">
+        <img src="<?php echo base_url('assets/img/puente.png')?>" class="d-block w-100" alt="puente">
         <div class="carousel-caption text-sm bg-black opacity-50">
           <h5>Excursiones a Playas doradas todo el año 🏖️</h5>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/capibara.png" class="d-block w-100" alt="capibara">
+        <img src="<?php echo base_url('assets/img/capibara.png');?>" class="d-block w-100" alt="capibara">
         <div class="carousel-caption text-sm bg-black opacity-50">
           <h5>Paquetes a los Esteros del Iberá 🐊</h5>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/empedrado.png" class="d-block w-100" alt="img3">
+        <img src="<?php echo base_url('assets/img/empedrado.png')?>" class="d-block w-100" alt="img3">
         <div class="carousel-caption text-sm bg-black opacity-50">
           <h5>Conocé la Perla del Paraná 🏕️</h5>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/itati.png" class="d-block w-100" alt="itati">
+         <img src="<?php echo base_url('assets/img/itati.png')?>" class="d-block w-100" alt="itati">
         <div class="carousel-caption text-sm bg-black opacity-50">
           <h5>Visitá la Basílica de Itatí 🙏</h5>
         </div>
