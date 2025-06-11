@@ -31,4 +31,7 @@ $routes->get('/logout', 'LoginController::logout');
 /*rutas de Reservas */
 $routes->get('/panel/reservas', 'PanelController::reservas', ['filter'=> 'auth']);
 
-
+/*rutas de Admin a Realizar */
+$routes->get('/panel/admin/gestionar_reservas', 'AdminController::gestionar_reservas', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/gestionar_usuarios', 'AdminController::gestionar_usuarios', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/logout', 'LoginController::logout');

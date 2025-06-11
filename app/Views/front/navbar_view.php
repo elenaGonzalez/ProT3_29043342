@@ -14,17 +14,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                
-                <?php if(session()->id_perfil == 1 || session()->id_perfil == 2 ): ?>
+        <?php if(session()->id_perfil == 2 ): ?>
             <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('/panel') ?>">Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contactos">Contactos</a>
+                    <a class="nav-link" href="<?php echo base_url('contactos') ?>">Contactos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout">Logout</a>
                 </li>
         <?php else: ?>
+             <?php if(session()->id_perfil == 1 ): ?>
+            <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('/panel') ?>">Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout">Logout</a>
+                </li>
+            <?php else: ?>
              <li class="nav-item">
                     <a class="nav-link" href="quienes_somos">Quienes Somos</a>
                 </li>
@@ -45,6 +53,7 @@
                     <a class="nav-link" href="login">Login</a>
                 </li>
             <?php endif; ?>
+              <?php endif; ?>
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">

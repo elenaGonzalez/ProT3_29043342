@@ -7,4 +7,9 @@ class usuario_Model extends Model
     protected $table = 'usuarios';
     protected $primaryKey = 'id_usuario';
     protected $allowedFields = ['nombre','apellido','usuario', 'email', 'pass','id_perfil','baja', 'created_at'];
+
+public function getUsuarios()
+  {
+    return $this->findAll();
+  }
 }

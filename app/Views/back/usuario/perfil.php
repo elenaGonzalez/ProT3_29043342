@@ -7,14 +7,17 @@
         <?php if(session()->id_perfil == 1): ?>
             <div>
                 <h1>Bienvenid@ Administrador  <?= session('nombre');?></h1>
+                 <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/admin/gestionar_reservas') ?>" role="button">Reservas</a>
+                 <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/admin/gestionar_usuarios') ?>" role="button">Usuarios</a>
             </div>
         <?php elseif(session()->id_perfil == 2): ?>
             <div>
                 <h1>Bienvenid@ Usuario <?= session('nombre');?></h1>
             </div>
-            <?php endif; ?>
+        
          <a class="btn btn-primary" href="<?php echo base_url('/panel/reservas') ?>" role="button">Ver reservas</a>
-        <div class="table-responsive">
+         <?php endif; ?>
+         <div class="table-responsive">
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
