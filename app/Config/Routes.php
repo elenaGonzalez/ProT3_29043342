@@ -10,7 +10,7 @@ $routes->get('principal', 'Home::index');
 $routes->get('comentarios', 'Home::comentarios');
 $routes->get('quienes_somos', 'Home::quienes_somos');
 $routes->get('acerca_de', 'Home::acerca_de');
-$routes->get('registro', 'Home::registro');
+//$routes->get('registro', 'Home::registro');
 $routes->get('login', 'Home::login');
 $routes->get('servicios', 'Home::servicios');
 $routes->get('contactos', 'Home::contactos');
@@ -32,6 +32,12 @@ $routes->get('/logout', 'LoginController::logout');
 $routes->get('/panel/reservas', 'PanelController::reservas', ['filter'=> 'auth']);
 
 /*rutas de Admin a Realizar */
-$routes->get('/panel/admin/gestionar_reservas', 'AdminController::gestionar_reservas', ['filter'=> 'admin/*']);
-$routes->get('/panel/admin/gestionar_usuarios', 'AdminController::gestionar_usuarios', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/reservas', 'AdminController::gestionar_reservas', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios', 'AdminController::gestionar_usuarios', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios/(:segment)/editar', 'AdminController::form_editar/$1', ['filter'=> 'admin/*']);
+$routes->post('/panel/admin/usuarios/update/(:segment)', 'AdminController::formValidation/$1', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios/update', 'AdminController::success', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios/(:segment)/eliminar', 'AdminController::baja_usuario/$1', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios/(:segment)/reactivar', 'AdminController::reactivar_usuario/$1', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/logout', 'LoginController::logout');
+

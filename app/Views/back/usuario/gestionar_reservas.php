@@ -2,7 +2,7 @@
 <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
     <div class="container p-5">
         <h1>Gestionar Reservas</h1>
-        <a class="btn btn-primary" href="<?php echo base_url('/panel') ?>" role="button">Perfil</a>
+        <a class="btn btn-warning" href="<?php echo base_url('/panel') ?>" role="button">Panel</a>
         <div class="table-responsive">
             <table class="table table-responsive-md table-success table-striped">
                 <thead>

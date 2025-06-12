@@ -4,20 +4,21 @@
         $session = session();
         $nombre = $session->get('nombre');
         ?>
-        <?php if(session()->id_perfil == 1): ?>
+        <?php if (session()->id_perfil == 1): ?>
             <div>
-                <h1>Bienvenid@ Administrador  <?= session('nombre');?></h1>
-                 <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/admin/gestionar_reservas') ?>" role="button">Reservas</a>
-                 <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/admin/gestionar_usuarios') ?>" role="button">Usuarios</a>
+                <h2>Bienvenid@ Administrador <?= session('nombre'); ?></h2>
+                <a class="btn btn-warning btn-sm" href="<?php echo base_url('/panel/admin/usuarios') ?>" role="button">Usuarios</a>
+                <a class="btn btn-warning btn-sm" href="<?php echo base_url('/panel/admin/reservas') ?>" role="button">Reservas</a>
+                <a class="btn btn-warning btn-sm" href="<?php echo base_url('/panel/admin/servicios') ?>" role="button">Servicios</a>
             </div>
-        <?php elseif(session()->id_perfil == 2): ?>
+        <?php elseif (session()->id_perfil == 2): ?>
             <div>
-                <h1>Bienvenid@ Usuario <?= session('nombre');?></h1>
+                <h1>Bienvenid@ Usuario <?= session('nombre'); ?></h1>
             </div>
-        
-         <a class="btn btn-primary" href="<?php echo base_url('/panel/reservas') ?>" role="button">Ver reservas</a>
-         <?php endif; ?>
-         <div class="table-responsive">
+
+            <a class="btn btn-primary" href="<?php echo base_url('/panel/reservas') ?>" role="button">Ver reservas</a>
+        <?php endif; ?>
+        <div class="table-responsive">
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
@@ -28,9 +29,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Maria</td>
-                        <td>Suarez</td>
-                        <td>maria_suarez@gml.com</td>
+                        <td><?= session('nombre'); ?></td>
+                        <td><?= session('apellido'); ?></td>
+                        <td><?= session('email'); ?></td>
                     </tr>
                 </tbody>
             </table>

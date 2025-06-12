@@ -16,13 +16,13 @@
                
         <?php if(session()->id_perfil == 2 ): ?>
             <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('/panel') ?>">Panel</a>
+                    <a class="nav-link" href="<?php echo base_url('/panel');?>">Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('contactos') ?>">Contactos</a>
+                    <a class="nav-link" href="<?php echo base_url('contactos');?>">Contactos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout">Logout</a>
+                    <a class="nav-link" href="<?php echo base_url('logout') ;?>">Logout</a>
                 </li>
         <?php else: ?>
              <?php if(session()->id_perfil == 1 ): ?>
@@ -30,9 +30,10 @@
                     <a class="nav-link" href="<?php echo base_url('/panel') ?>">Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout">Logout</a>
+                    <a class="nav-link" href="<?php echo base_url('logout') ;?>">Logout</a>
                 </li>
             <?php else: ?>
+                <!-- USUARIO NO LOGUEADO -->
              <li class="nav-item">
                     <a class="nav-link" href="quienes_somos">Quienes Somos</a>
                 </li>
@@ -54,6 +55,7 @@
                 </li>
             <?php endif; ?>
               <?php endif; ?>
+              <!-- FIN USUARIO NO LOGUEADO -->
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">

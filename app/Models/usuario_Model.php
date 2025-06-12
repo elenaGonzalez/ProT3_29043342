@@ -12,4 +12,5 @@ public function getUsuarios()
   {
     return $this->findAll();
   }
+
 }

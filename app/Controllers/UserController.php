@@ -50,7 +50,7 @@ class UserController extends BaseController
                 'pass' => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
 
             ]);
-            session()->setFlashdata('success', 'Usuario registrado con exito');
+            session()->setFlashdata('msg', 'Usuario registrado con exito');
             return $this->response->redirect('login');
         }
     }

@@ -2,7 +2,7 @@
     <div class="w-50">
         <!-- Error -->
         <?php if(session()->getFlashdata('msg')):?>      
-         <div class="alert alert-danger">
+         <div class="alert alert-warning">
             <?= session()->getFlashdata('msg')?>
         </div>
          <?php endif;?> 
