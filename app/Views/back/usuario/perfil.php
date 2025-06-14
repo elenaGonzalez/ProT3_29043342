@@ -3,6 +3,7 @@
         <?php
         $session = session();
         $nombre = $session->get('nombre');
+        $id_usuario = $session->get('id_usuario');
         ?>
         <?php if (session()->id_perfil == 1): ?>
             <div>
@@ -16,7 +17,7 @@
                 <h1>Bienvenid@ Usuario <?= session('nombre'); ?></h1>
             </div>
 
-            <a class="btn btn-primary" href="<?php echo base_url('/panel/reservas') ?>" role="button">Ver reservas</a>
+            <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/reservas/usuario/'. $id_usuario.''); ?>" role="button">Reservas</a>
         <?php endif; ?>
         <div class="table-responsive">
             <table class="table table-success table-striped">

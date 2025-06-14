@@ -1,12 +1,12 @@
 <div class="p-5 d-flex align-items-center justify-content-center">
     <div class="w-50">
-        <!-- Error -->
+        <!-- Msg -->
         <?php if(session()->getFlashdata('msg')):?>      
          <div class="alert alert-warning">
             <?= session()->getFlashdata('msg')?>
         </div>
          <?php endif;?> 
-          <!-- Fin Error -->
+          <!-- Fin Msg -->
         <form class="bg-success-subtle p-2" action="<?php echo base_url('/enviar_login')?>" method="POST" id="formulario_login">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>

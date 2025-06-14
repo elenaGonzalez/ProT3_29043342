@@ -22,6 +22,15 @@ class UserController extends BaseController
 
     public function formValidation()
     {
+         // Obtén los datos del formulario
+        $data = $this->request->getPost();
+
+        // Guarda los datos en la sesión (para pre-rellenar)
+        $session = session();
+        foreach ($data as $key => $value) {
+            $session->setFlashdata($key, $value);
+        }
+
         $input = $this->validate(
             [
                 'nombre' => 'required|min_length[3]',

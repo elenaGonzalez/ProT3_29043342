@@ -2,7 +2,11 @@
   <section>
     <!--<p class="text-primary p-3 fw-bolds fst-italic">Corrientes: Naturalmente Mágica 🐊</p> -->
     <div class="text-center text-success-emphasis p-2 text-white bg-opacity-90 p-3">
-      
+      <?php if(session()->getFlashdata('msg')):?>      
+         <div class="alert alert-warning">
+            <?= session()->getFlashdata('msg')?>
+        </div>
+         <?php endif;?> 
       <p><strong>Turismo Corrientes </strong> nace como una empresa que ofrece verdaderas aventuras ecológicas
         que no puedes dejar de conocer.</p>
       <p> Te ofrecemos las mejores excusiones y paseos, para que vivas a pleno tu estadía en Corrientes!!</p>

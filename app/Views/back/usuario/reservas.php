@@ -1,7 +1,7 @@
 <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
      <div class="container p-5">
             <h1>Reservas</h1>
-             <a class="btn btn-primary" href="<?php echo base_url('/panel') ?>" role="button">Perfil</a>
+             <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel') ?>" role="button">Perfil</a>
              <div class="table-responsive">
             <table class="table table-responsive-md table-success table-striped">
                 <thead>
@@ -14,43 +14,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Esteros del Ibera</td>
-                        <td>03/03/2025</td>
-                        <td>Bajada del Puente Gral Belgrano</td>
-                        <td>
-                            Me encanta la naturaleza, por eso elegí conocer los Esteros del Iberá. Quedé facinada!!
-                        </td>
-                        <td>
-                            <span class="fa fa-start">
-                                <i class="icono">
-                                    <img src="assets/img/star-fill.svg" alt="Icono" width="10" height="10">
-                                </i>
-                            </span>
-                            <span class="fa fa-start">
-                                <i class="icono">
-                                    <img src="assets/img/star-fill.svg" alt="Icono" width="10" height="10">
-                                </i>
-                            </span>
-                            <span class="fa fa-start">
-                                <i class="icono">
-                                    <img src="assets/img/star-fill.svg" alt="Icono" width="10" height="10">
-                                </i>
-                            </span>
-                            <span class="fa fa-start">
-                                <i class="icono">
-                                    <img src="assets/img/star-fill.svg" alt="Icono" width="10" height="10">
-                                </i>
-                            </span>
-                            <span class="fa fa-start">
-                                <i class="icono">
-                                    <img src="assets/img/star-fill.svg" alt="Icono" width="10" height="10">
-                                </i>
-                            </span>
-                        </td>
+                     <?php if (!empty($reservas) && is_array($reservas)): ?>
+                        <?php foreach ($reservas as $reservas_item): ?>
+                            <tr>
+                                <td><?= esc($reservas_item["id_servicio"]); ?></td>
+                                <td><?= esc($reservas_item["fecha"]); ?></td>
+                                <td><?= esc($reservas_item["origen"]); ?></td>
+                                <td><?= esc($reservas_item["comentario"]); ?></td>
+                                <td>
+                                <?php if($reservas_item["calificacion"] > 0 ) : ?>    
+                                <?php for ($i = 0; $i < $reservas_item["calificacion"]; $i++) : ?>
+                                    <span class="fa fa-start">
+                                        <i class="icono">
+                                            <img src="<?php echo base_url('assets/img/star-fill.svg') ?>" alt="Icono" width="15" height="15">
+                                        </i>
+                                    </span>
+                                <?php endfor; ?>
+                                <?php else: ?>
+                                    <button type="button" class="btn btn-primary btn-sm">Calificar</button>
+                                 <?php endif; ?>   
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                          <tr>
+                          <td class="col-5">No hay reservas</td>
                     </tr>
+                    <?php endif ?>
                 </tbody>
             </table>
              </div>
         </div>
-</div>
+    </div>

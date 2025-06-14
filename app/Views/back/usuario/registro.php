@@ -1,7 +1,7 @@
 <div class="p-5 d-flex align-items-center justify-content-center">
     <div class="w-50">
         <?php $validation = \Config\Services::validation(); ?>
-
+            <?php $session = session(); ?>
             <form class="bg-success-subtle p-2" action="<?php echo base_url('/enviar_form') ?>" method="POST" id="formulario_registro">
                 <?= csrf_field(); ?>
                 <?= csrf_field(); ?>
@@ -14,7 +14,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">* Nombre</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        name="nombre" placeholder="Nombre">
+                        name="nombre" placeholder="Nombre" value="<?= old('nombre', $session->getFlashdata('nombre')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('nombre')) { ?>
                         <div class="text-danger mt-2">
@@ -26,7 +26,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">* Apellido</label>
                     <input type="text" class="form-control" id="exampleFormControlInput2"
-                        name="apellido" placeholder="Apellido">
+                        name="apellido" placeholder="Apellido" value="<?= old('apellido', $session->getFlashdata('apellido')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('apellido')) { ?>
                         <div class="text-danger mt-2">
@@ -38,7 +38,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput3" class="form-label">* Email</label>
                     <input type="email" class="form-control" id="exampleFormControlInput3"
-                        name="email" placeholder="email@ejemplo.com">
+                        name="email" placeholder="email@ejemplo.com" value="<?= old('email', $session->getFlashdata('email')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('email')) { ?>
                         <div class="text-danger mt-2">
@@ -50,7 +50,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput4" class="form-label">* Usuario</label>
                     <input type="usuario" class="form-control" id="exampleFormControlInput4"
-                        name="usuario" placeholder="Nombre de usuario">
+                        name="usuario" placeholder="Nombre de usuario" value="<?= old('usuario', $session->getFlashdata('usuario')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('usuario')) { ?>
                         <div class="text-danger mt-2">
@@ -62,7 +62,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput5" class="form-label">* Contraseña</label>
                     <input type="password" id="exampleFormControlInput5" class="form-control"
-                        name="pass" placeholder="Contraseña">
+                        name="pass" placeholder="Contraseña" value="<?= old('pass', $session->getFlashdata('pass')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('pass')) { ?>
                         <div class="text-danger mt-2">
@@ -74,7 +74,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput5" class="form-label">* Repetir Contraseña</label>
                     <input type="password" id="exampleFormControlInput5" class="form-control"
-                        name="pass_confirm" placeholder="Repetir Contraseña">
+                        name="pass_confirm" placeholder="Repetir Contraseña" value="<?= old('pass_confirm', $session->getFlashdata('pass_confirm')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('pass_confirm')) { ?>
                         <div class="text-danger mt-2">

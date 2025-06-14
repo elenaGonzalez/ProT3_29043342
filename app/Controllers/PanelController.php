@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\reserva_Model;
+use App\Models\usuario_Model;
 use CodeIgniter\Controller;
 
 class PanelController extends Controller
@@ -25,25 +26,20 @@ class PanelController extends Controller
 
   }
 
-  public function reservas()
+  public function reservas($id)
   {
-    $session = session();
-    $id_usuario = $session->get('id_usuario');
-    $nombre = $session->get('usuario');
-    $apellido = $session->get('apellido');
-    $email = $session->get('email');
-    $perfil = $session->get('id_perfil');
+    $id_usuario = ['id_usuario' => $id];
+    $usuarioModel = new usuario_Model();
+    $reservaModel = new reserva_Model();
 
-    $dato['id_perfil'] = $perfil;
-    $dato['id_usuario'] = $id_usuario;
-    $dato['nombre'] = $nombre;
-    $dato['apellido'] = $apellido;
-    $dato['email'] = $email;
+    $data = [
+      'titulo' => 'Reservas de Usuario',
+      'reservas' =>  $reservaModel-> where($id_usuario)->find()
+    ];
 
-    $data['titulo'] =  'Reservas';
     echo view('front/head_view', $data);
     echo view('front/navbar_view');
-    echo view('back/usuario/reservas', $dato);
+    echo view('back/usuario/reservas');
     echo view('front/footer_view');
 
   }
