@@ -6,6 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 
 class Auth implements FilterInterface
 {
+    protected $request;
     public function before(RequestInterface $request, $arguments = null)
     {
         if(!session()->get('logged_in')){

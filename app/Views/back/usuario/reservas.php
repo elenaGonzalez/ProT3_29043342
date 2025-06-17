@@ -38,7 +38,7 @@
                         <?php endforeach ?>
                     <?php else : ?>
                           <tr>
-                          <td class="col-5">No hay reservas</td>
+                           <td colspan="5">No hay reservas</td>
                     </tr>
                     <?php endif ?>
                 </tbody>

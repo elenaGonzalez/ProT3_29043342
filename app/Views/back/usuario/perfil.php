@@ -14,7 +14,7 @@
             </div>
         <?php elseif (session()->id_perfil == 2): ?>
             <div>
-                <h1>Bienvenid@ Usuario <?= session('nombre'); ?></h1>
+                <h2>Bienvenid@ Usuario <?= session('nombre'); ?></h2>
             </div>
 
             <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/reservas/usuario/'. $id_usuario.''); ?>" role="button">Reservas</a>
@@ -26,6 +26,9 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
+                        <?php if (session()->id_perfil == 2): ?>
+                            <th score="col">Acciones</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +36,11 @@
                         <td><?= session('nombre'); ?></td>
                         <td><?= session('apellido'); ?></td>
                         <td><?= session('email'); ?></td>
+                        <td>
+                             <?php if (session()->id_perfil == 2): ?>
+                              <a href="<?php echo base_url('/panel/usuario/'. $id_usuario.'/editar'); ?>">Editar</a>
+                        <?php endif; ?>
+                        </td>
                     </tr>
                 </tbody>
             </table>

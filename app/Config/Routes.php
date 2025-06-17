@@ -30,6 +30,9 @@ $routes->get('/logout', 'LoginController::logout');
 
 /*rutas de Reservas */
 $routes->get('/panel/reservas/usuario/(:segment)', 'PanelController::reservas/$1', ['filter'=> 'auth']);
+$routes->get('/panel/usuario/(:segment)/editar', 'PanelController::form_editar/$1', ['filter'=> 'auth']);
+$routes->post('/panel/usuario/update/(:segment)', 'PanelController::formValidation/$1', ['filter'=> 'auth']);
+$routes->get('/panel/usuario/update', 'PanelController::success/$1', ['filter'=> 'auth']);
 
 /*rutas de Admin a Realizar */
 $routes->get('/panel/admin/reservas', 'AdminController::gestionar_reservas', ['filter'=> 'admin/*']);

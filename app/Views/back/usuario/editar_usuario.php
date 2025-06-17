@@ -1,8 +1,11 @@
   <div class="p-5 d-flex align-items-center justify-content-center">
     <div class="w-50">
         <?php $validation = \Config\Services::validation(); ?>
-        
+       <?php if (session()->id_perfil == 1): ?>
             <form class="bg-success-subtle p-2" action="<?php echo base_url('/panel/admin/usuarios/update/'.$id_usuario) ?>" method="POST" id="formulario_registro">
+                <?php else : ?>
+                <form class="bg-success-subtle p-2" action="<?php echo base_url('/panel/usuario/update/'.$id_usuario) ?>" method="POST" id="formulario_registro">
+                <?php endif ;?>
                 <?= csrf_field(); ?>
                 <?= csrf_field(); ?>
                 <?php if (!empty(session()->getFlashdata('fail'))): ?>
@@ -54,5 +57,6 @@
                 <button type="submit" class="btn btn-sm btn-primary">Editar</button>
                 <button type="reset" class="btn btn-sm btn-danger">Cancelar</button>
             </form>
+      
         </div>
   </div>

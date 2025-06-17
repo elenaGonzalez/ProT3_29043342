@@ -155,6 +155,9 @@ class AdminController extends Controller
       ];
       
       $formModel->save($usuario);
+      session()->set('nombre', $usuario['nombre']);
+      session()->set('apellido', $usuario['apellido']);
+      session()->set('email', $usuario['email']);
       session()->setFlashdata('msg', 'Usuario actualizado con exito');
       return $this->response->redirect('./');
     }

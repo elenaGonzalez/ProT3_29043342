@@ -30,8 +30,6 @@ class LoginController extends Controller
             $pass = $data['pass'];
             $ba = $data['baja'];
             
-            log_message('info', "logueame esta password: $password pass: $pass");
-            
             if ($ba == "SI") {
                 $session->setFlashdata('msg', 'Usuario dado de baja');
                 return redirect()->to('/login');
@@ -52,6 +50,7 @@ class LoginController extends Controller
                     'logged_in' => TRUE
                 ];
                 $session->set($ses_data);
+                $session->set('id_usuario', $ses_data['id_usuario'] ) ;
 
                 $session->setFlashdata('msg', 'Bienvenido');
                 return redirect()->to('/panel');
