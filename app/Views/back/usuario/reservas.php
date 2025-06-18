@@ -1,4 +1,9 @@
 <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+     <?php
+        $session = session();
+        $nombre = $session->get('nombre');
+        $id_usuario = $session->get('id_usuario');
+        ?>
      <div class="container p-5">
             <h1>Reservas</h1>
              <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel') ?>" role="button">Perfil</a>
@@ -17,7 +22,7 @@
                      <?php if (!empty($reservas) && is_array($reservas)): ?>
                         <?php foreach ($reservas as $reservas_item): ?>
                             <tr>
-                                <td><?= esc($reservas_item["id_servicio"]); ?></td>
+                                <td><?= esc($reservas_item["servicio_nombre"]); ?></td>
                                 <td><?= esc($reservas_item["fecha"]); ?></td>
                                 <td><?= esc($reservas_item["origen"]); ?></td>
                                 <td><?= esc($reservas_item["comentario"]); ?></td>
@@ -31,7 +36,10 @@
                                     </span>
                                 <?php endfor; ?>
                                 <?php else: ?>
-                                    <button type="button" class="btn btn-primary btn-sm">Calificar</button>
+                                     <a class="btn btn-primary btn-sm" 
+                                     href="<?php echo base_url('/panel/usuario/comentar_reserva/'.$id_usuario .'/'.$reservas_item['id_reserva']); ?>">
+                                     Calificar
+                                    </a>
                                  <?php endif; ?>   
                                 </td>
                             </tr>

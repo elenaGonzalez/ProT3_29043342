@@ -19,7 +19,6 @@
                             <th scope="col">Apellido</th>
                             <th scope="col">Email</th>
                             <th scope="col">Id perfil</th>
-                            <th scope="col">Dado de Baja</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -36,10 +35,11 @@
                                     <td><?= esc($usuarios_item["apellido"]); ?></td>
                                     <td><?= esc($usuarios_item["email"]); ?></td>
                                     <td><?= esc($usuarios_item["id_perfil"]); ?></td>
-                                     <td><?= esc($usuarios_item["baja"]); ?></td>
                                     <td>
                                         <a href="<?php echo base_url('/panel/admin/usuarios/' . $usuarios_item["id_usuario"] . '/editar'); ?>" class="btn btn-sm btn-primary">Editar</a>
                                         <a href="<?php echo base_url('/panel/admin/usuarios/' . $usuarios_item["id_usuario"] . '/eliminar'); ?>" class="btn btn-sm btn-danger">Eliminar</a>
+                                        <a href="<?php echo base_url('/panel/admin/usuarios/' . $usuarios_item["id_usuario"] . '/reservar'); ?>" class="btn btn-sm btn-warning">Reservar</a>
+                                        
                                         <?php if($usuarios_item["baja"] == 'SI'):?>
                                         <a href="<?php echo base_url('/panel/admin/usuarios/' . $usuarios_item["id_usuario"] . '/reactivar'); ?>" class="btn btn-sm btn-success">Activar</a>
                                         <?php else: ?>

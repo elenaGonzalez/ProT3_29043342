@@ -79,6 +79,8 @@ class Home extends BaseController
         foreach ($data as $key => $value) {
             $session->setFlashdata($key, $value);
         }
+         $valorSeleccionado = $data["servicio"];
+       
          $input = $this->validate([
           'nombre' => 'required|min_length[3]',
           'apellido' => 'required|min_length[3]|max_length[25]',

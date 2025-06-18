@@ -15,8 +15,35 @@ class reserva_Model extends Model
     return $this->findAll();
   }
 
-  public function getReservasUsuario($id_usuario)
-  {
-     return $this->where('id_usuario' , $id_usuario)->findAll();
-  }
+   //Para traer el nombre de servicio para las reservas de todos los usuarios
+  public function getReservasConServicios()
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+  //Para traer el nombre de servicio para las reservas de un usuario
+  public function getReservasConServicio($id_usuario)
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->where('id_usuario' , $id_usuario);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+   
+    //
+    public function getReservaConServicio($id_reserva)
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->where('reservas.id_reserva' , $id_reserva);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
   }

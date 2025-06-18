@@ -13,4 +13,9 @@ public function getUsuarios()
     return $this->findAll();
   }
 
+ public function __toString()
+    {
+        return $this->nombre . ' (' . $this->apellido . ')';
+    }
+
 }

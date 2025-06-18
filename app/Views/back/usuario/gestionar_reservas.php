@@ -21,7 +21,7 @@
                         <?php foreach ($reservas as $reservas_item): ?>
                             <tr>
                                 <td><?= esc($reservas_item["id_reserva"]); ?></td>
-                                <td><?= esc($reservas_item["id_servicio"]); ?></td>
+                                <td><?= esc($reservas_item["servicio_nombre"]); ?></td>
                                 <td><?= esc($reservas_item["id_usuario"]); ?></td>
                                 <td><?= esc($reservas_item["fecha"]); ?></td>
                                 <td><?= esc($reservas_item["origen"]); ?></td>

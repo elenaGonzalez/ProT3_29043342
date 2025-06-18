@@ -5,6 +5,11 @@
         $nombre = $session->get('nombre');
         $id_usuario = $session->get('id_usuario');
         ?>
+         <?php if(session()->getFlashdata('msg')):?>      
+         <div class="alert alert-warning">
+            <?= session()->getFlashdata('msg')?>
+        </div>
+         <?php endif;?> 
         <?php if (session()->id_perfil == 1): ?>
             <div>
                 <h2>Bienvenid@ Administrador <?= session('nombre'); ?></h2>
@@ -17,7 +22,7 @@
                 <h2>Bienvenid@ Usuario <?= session('nombre'); ?></h2>
             </div>
 
-            <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/reservas/usuario/'. $id_usuario.''); ?>" role="button">Reservas</a>
+            <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/reservas/usuario/' . $id_usuario . ''); ?>" role="button">Reservas</a>
         <?php endif; ?>
         <div class="table-responsive">
             <table class="table table-success table-striped">
@@ -36,11 +41,11 @@
                         <td><?= session('nombre'); ?></td>
                         <td><?= session('apellido'); ?></td>
                         <td><?= session('email'); ?></td>
-                        <td>
-                             <?php if (session()->id_perfil == 2): ?>
-                              <a href="<?php echo base_url('/panel/usuario/'. $id_usuario.'/editar'); ?>">Editar</a>
+                        <?php if (session()->id_perfil == 2): ?>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/usuario/' . $id_usuario . '/editar'); ?>">Editar</a>
+                            </td>
                         <?php endif; ?>
-                        </td>
                     </tr>
                 </tbody>
             </table>

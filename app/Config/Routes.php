@@ -34,11 +34,17 @@ $routes->get('/panel/usuario/(:segment)/editar', 'PanelController::form_editar/$
 $routes->post('/panel/usuario/update/(:segment)', 'PanelController::formValidation/$1', ['filter'=> 'auth']);
 $routes->get('/panel/usuario/update', 'PanelController::success/$1', ['filter'=> 'auth']);
 
+$routes->get('/panel/usuario/comentar_reserva/(:segment)/(:segment)', 'PanelController::form_comentario/$1/$2', ['filter'=> 'auth']);
+$routes->post('/panel/usuario/comentar_reserva/(:segment)/(:segment)', 'PanelController::formValidationComentario/$1/$2', ['filter'=> 'auth']);
+
 /*rutas de Admin a Realizar */
 $routes->get('/panel/admin/reservas', 'AdminController::gestionar_reservas', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios', 'AdminController::gestionar_usuarios', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/servicios', 'AdminController::gestionar_servicios', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios/(:segment)/editar', 'AdminController::form_editar/$1', ['filter'=> 'admin/*']);
 $routes->post('/panel/admin/usuarios/update/(:segment)', 'AdminController::formValidation/$1', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/usuarios/(:segment)/reservar', 'AdminController::form_reservar/$1', ['filter'=> 'admin/*']);
+$routes->post('/panel/admin/usuarios/reservar/(:segment)', 'AdminController::formValidationReserva/$1', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios/update', 'AdminController::success', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios/(:segment)/eliminar', 'AdminController::baja_usuario/$1', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios/(:segment)/reactivar', 'AdminController::reactivar_usuario/$1', ['filter'=> 'admin/*']);
