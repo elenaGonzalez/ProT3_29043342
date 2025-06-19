@@ -10,7 +10,7 @@
         <a class="btn btn-warning" href="<?php echo base_url('/panel') ?>" role="button">Panel</a>
         <div class="table-responsive">
             <table class="table table-responsive-md table-success table-striped">
-                <thead>
+                <thead class ="text-center">
                     <tr>
                         <th scope="col">Reserva</th>
                         <th scope="col">Id servicio</th>
@@ -22,13 +22,13 @@
                          <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                     <?php if (!empty($reservas) && is_array($reservas)): ?>
                         <?php foreach ($reservas as $reservas_item): ?>
                             <tr>
                                 <td><?= esc($reservas_item["id_reserva"]); ?></td>
                                 <td><?= esc($reservas_item["servicio_nombre"]); ?></td>
-                                <td><?= esc($reservas_item["id_usuario"]); ?></td>
+                                <td><?= esc($reservas_item["usuario_nombre"]); ?> <?= esc($reservas_item["usuario_apellido"]); ?></td>
                                 <td><?= esc($reservas_item["fecha"]); ?></td>
                                 <td><?= esc($reservas_item["origen"]); ?></td>
                                 <td><?= esc($reservas_item["cantidad_asientos"]); ?></td>

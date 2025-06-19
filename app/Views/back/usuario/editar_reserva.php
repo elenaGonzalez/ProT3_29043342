@@ -2,7 +2,7 @@
     <div class="w-50">
         <?php $validation = \Config\Services::validation(); ?>  
           <h2> 
-            <?= esc($servicio_nombre); ?>
+            <?= esc($servicio_nombre); ?> - Usuario: <?= esc($nombre_usuario); ?> <?= esc($apellido_usuario); ?>
             </h2> 
             <form class="bg-success-subtle p-2" action="<?php echo base_url('/panel/admin/editar_reserva/'.$id_servicio['id_servicio'].'/'.$id_reserva) ?>" method="POST" id="formulario_editar_r">
                 <?= csrf_field(); ?>

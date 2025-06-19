@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\reserva_Model;
 use App\Models\servicio_Model;
+use App\Models\usuario_Model;
 use CodeIgniter\Controller;
 
 class ReservaController extends Controller
@@ -66,7 +67,7 @@ class ReservaController extends Controller
     } else {
 
       $servicio = $servicios->find($data['id_servicio']);
-      $total = $servicio['costo'] * $data['cantidad_asientos'];
+      $total = (float)$servicio['costo'] * (float)$data['cantidad_asientos'];
 
       $formReserva->save([
         'id_servicio' =>  $valorSeleccionado,
@@ -77,7 +78,7 @@ class ReservaController extends Controller
         'total' => $total
       ]);
 
-      session()->setFlashdata('msg', 'Usuario registrado con exito');
+      session()->setFlashdata('msg', 'Reserva registrada con exito');
       return $this->response->redirect(base_url('/panel'));
     }
   }
@@ -90,11 +91,18 @@ class ReservaController extends Controller
     $servicio_a_editar = $servicio->find($id_servicio);
 
     $reservaModel = new reserva_Model();
+    $reservaEdit = $reservaModel->find($id_reserva);
+    $usuario = new usuario_Model();
+    $usuarioReserva = $usuario->find($reservaEdit[0]['id_usuario']);
+
+
     $data = [
       'titulo' => 'Editar reserva',
-      'reserva' =>  $reservaModel->find($id_reserva),
+      'reserva' =>  $reservaEdit,
       'id_servicio' => $id_servicio,
-      'servicio_nombre' => $servicio_a_editar[0]['titulo']
+      'servicio_nombre' => $servicio_a_editar[0]['titulo'],
+      'nombre_usuario' => $usuarioReserva['nombre'],
+      'apellido_usuario' => $usuarioReserva['apellido']
     ];
 
     echo view('front/head_view', $data);
@@ -121,15 +129,25 @@ class ReservaController extends Controller
     $reserva_edit = $formModel->find($id_reserva);
 
     if (!$input) {
+      $servicio = new servicio_Model();
+      $servicio_a_editar = $servicio->find($id_servicio);
+      $reservaModel = new reserva_Model();
+      $reservaEdit = $reservaModel->find($id_reserva);
+      $usuario = new usuario_Model();
+      $usuarioReserva = $usuario->find($reservaEdit[0]['id_usuario']);
+
       $dato = [
         'titulo' => 'Editar reserva',
         'reserva' =>  $reserva_edit,
-        'id_servicio' => $id_servicio
+        'id_servicio' => $id_servicio,
+        'servicio_nombre' => $servicio_a_editar[0]['titulo'],
+        'nombre_usuario' => $usuarioReserva['nombre'],
+        'apellido_usuario' => $usuarioReserva['apellido']
       ];
 
       echo view('front/head_view', $dato);
       echo view('front/navbar_view');
-      echo view('back/usuario/editar_usuario', $id_reserva);
+      echo view('back/usuario/editar_reserva', $id_reserva);
       echo view('front/footer_view', ['validation' => $this->validator]);
     } else {
       $servicios = new servicio_Model();
@@ -140,7 +158,7 @@ class ReservaController extends Controller
       $reserva = [
         'id_reserva' => $id_reserva,
         'fecha' => $this->request->getVar('fecha'),
-        'origen' => $this->request->getVar('origen'),
+        'origen' => strtolower($this->request->getVar('origen')),
         'cantidad_asientos' => $this->request->getVar('cantidad_asientos'),
         'total' => $total
       ];
@@ -193,7 +211,7 @@ class ReservaController extends Controller
     $reservaModel = new reserva_Model();
     $reservaAEditar = $reservaModel->find($id_reserva);
     if (!$input) {
-     
+
       $servicio = new servicio_Model();
       $servicio_a_editar = $servicio->find($reservaAEditar[0]['id_servicio']);
 
@@ -208,14 +226,14 @@ class ReservaController extends Controller
       echo view('back/usuario/comentar_reserva', $id_reserva);
       echo view('front/footer_view', ['validation' => $this->validator]);
     } else {
-      
+
       $comentario = [
         'id_reserva' => $id_reserva,
         'comentario' => $this->request->getVar('comentario'),
         'calificacion' => $this->request->getVar('calificacion')
       ];
       $reservaModel->save($comentario);
-       log_message('info', 'despues de guardar el comentario '.$id_reserva['id_reserva']);
+      log_message('info', 'despues de guardar el comentario ' . $id_reserva['id_reserva']);
       session()->setFlashdata('msg', 'Comentario agregado con exito');
       return $this->response->redirect(base_url('/panel'));
     }

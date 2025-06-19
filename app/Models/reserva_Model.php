@@ -19,8 +19,9 @@ class reserva_Model extends Model
   public function getReservasConServicios()
     {
         $builder = $this->db->table('reservas');
-        $builder->select('reservas.*, servicios.titulo as servicio_nombre');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre, usuarios.nombre as usuario_nombre, usuarios.apellido as usuario_apellido');
         $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->join('usuarios', 'usuarios.id_usuario = reservas.id_usuario');
         $query = $builder->get();
         return $query->getResultArray();
     }

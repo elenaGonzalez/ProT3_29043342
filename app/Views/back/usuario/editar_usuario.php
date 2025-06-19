@@ -55,7 +55,6 @@
                   <?php endforeach ?>
                  <?php endif ;?>
                 <button type="submit" class="btn btn-sm btn-primary">Editar</button>
-                <button type="reset" class="btn btn-sm btn-danger">Cancelar</button>
             </form>
       
         </div>
