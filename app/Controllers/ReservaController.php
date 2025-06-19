@@ -8,7 +8,7 @@ use CodeIgniter\Controller;
 
 class ReservaController extends Controller
 {
-public function __construct()
+  public function __construct()
   {
     helper(['form', 'url']);
   }
@@ -64,10 +64,10 @@ public function __construct()
       echo view('back/usuario/nueva_reserva');
       echo view('front/footer_view', ['validation' => $this->validator]);
     } else {
-     
+
       $servicio = $servicios->find($data['id_servicio']);
       $total = $servicio['costo'] * $data['cantidad_asientos'];
-      
+
       $formReserva->save([
         'id_servicio' =>  $valorSeleccionado,
         'id_usuario' => $id_usuario,
@@ -82,7 +82,7 @@ public function __construct()
     }
   }
 
-   public function form_editar_reserva($id_r, $id_s)
+  public function form_editar_reserva($id_r, $id_s)
   {
     $id_servicio = ['id_servicio' => $id_s];
     $id_reserva = ['id_reserva' => $id_r];
@@ -91,18 +91,18 @@ public function __construct()
 
     $reservaModel = new reserva_Model();
     $data = [
-        'titulo' => 'Editar reserva',
-        'reserva' =>  $reservaModel->find($id_reserva),
-        'id_servicio' =>$id_servicio,
-        'servicio_nombre' => $servicio_a_editar[0]['titulo']
-      ];
+      'titulo' => 'Editar reserva',
+      'reserva' =>  $reservaModel->find($id_reserva),
+      'id_servicio' => $id_servicio,
+      'servicio_nombre' => $servicio_a_editar[0]['titulo']
+    ];
 
-      echo view('front/head_view', $data);
-      echo view('front/navbar_view');
-      echo view('back/usuario/editar_reserva', $id_reserva);
-      echo view('front/footer_view');
+    echo view('front/head_view', $data);
+    echo view('front/navbar_view');
+    echo view('back/usuario/editar_reserva', $id_reserva);
+    echo view('front/footer_view');
   }
-  
+
   public function formValidationEditarReserva($id_s, $id_r)
   {
     $id_servicio = ['id_servicio' => $id_s];
@@ -111,7 +111,7 @@ public function __construct()
 
     $input = $this->validate(
       [
-       'fecha' => 'required|max_length[10]',
+        'fecha' => 'required|max_length[10]',
         'cantidad_asientos' => 'required|min_length[1]|max_length[2]',
         'origen' => 'required|min_length[4]|max_length[50]'
       ]
@@ -119,12 +119,12 @@ public function __construct()
 
     $formModel = new reserva_Model();
     $reserva_edit = $formModel->find($id_reserva);
-   
+
     if (!$input) {
       $dato = [
         'titulo' => 'Editar reserva',
         'reserva' =>  $reserva_edit,
-        'id_servicio' =>$id_servicio
+        'id_servicio' => $id_servicio
       ];
 
       echo view('front/head_view', $dato);
@@ -132,11 +132,11 @@ public function __construct()
       echo view('back/usuario/editar_usuario', $id_reserva);
       echo view('front/footer_view', ['validation' => $this->validator]);
     } else {
-       $servicios = new servicio_Model();
-       $servicio = $servicios->find($id_servicio);
-       log_message('info', 'SOy costo del servicio '.$servicio[0]['titulo']);
-       $total = $servicio[0]['costo'] * $data['cantidad_asientos'];
-       
+      $servicios = new servicio_Model();
+      $servicio = $servicios->find($id_servicio);
+
+      $total = $servicio[0]['costo'] * $data['cantidad_asientos'];
+
       $reserva = [
         'id_reserva' => $id_reserva,
         'fecha' => $this->request->getVar('fecha'),
@@ -150,18 +150,24 @@ public function __construct()
       return $this->response->redirect(base_url('./panel/admin/reservas'));
     }
   }
-  
+
   public function form_comentario($id_u, $id_r)
   {
     $id_usuario = ['id_usuario' => $id_u];
     $id_reserva = ['id_reserva' => $id_r];
     $id_sesion = session()->get('id_usuario');
 
+    $reservaModel = new reserva_Model();
+    $reservaAEditar = $reservaModel->find($id_reserva);
+    $servicio = new servicio_Model();
+    $servicio_a_editar = $servicio->find($reservaAEditar[0]['id_servicio']);
+
     if ((string)$id_usuario['id_usuario'] ==  $id_sesion) {
-      $reservaModel = new reserva_Model();
+
       $data = [
         'titulo' => 'Comentar servicio',
-        'reserva' =>  $reservaModel->find($id_reserva)
+        'reserva' =>  $reservaAEditar,
+        'servicio_nombre' => $servicio_a_editar['titulo']
       ];
 
       echo view('front/head_view', $data);
@@ -173,11 +179,10 @@ public function __construct()
     }
   }
 
-  public function formValidationComentario($id_r, $id_s)
+  public function formValidationComentario($id_s, $id_r)
   {
     $id_usuario = ['id_usuario' => $id_s];
     $id_reserva = ['id_reserva' => $id_r];
-   
 
     $input = $this->validate(
       [
@@ -186,27 +191,31 @@ public function __construct()
       ]
     );
     $reservaModel = new reserva_Model();
-   
+    $reservaAEditar = $reservaModel->find($id_reserva);
     if (!$input) {
+     
+      $servicio = new servicio_Model();
+      $servicio_a_editar = $servicio->find($reservaAEditar[0]['id_servicio']);
+
       $data = [
         'titulo' => 'Comentar servicio',
-        'reserva' =>  $reservaModel->find($id_reserva)
+        'reserva' =>  $reservaModel->find($id_reserva),
+        'servicio_nombre' => $servicio_a_editar['titulo']
       ];
 
       echo view('front/head_view', $data);
       echo view('front/navbar_view');
       echo view('back/usuario/comentar_reserva', $id_reserva);
       echo view('front/footer_view', ['validation' => $this->validator]);
-
     } else {
-    
+      
       $comentario = [
         'id_reserva' => $id_reserva,
         'comentario' => $this->request->getVar('comentario'),
         'calificacion' => $this->request->getVar('calificacion')
       ];
       $reservaModel->save($comentario);
-
+       log_message('info', 'despues de guardar el comentario '.$id_reserva['id_reserva']);
       session()->setFlashdata('msg', 'Comentario agregado con exito');
       return $this->response->redirect(base_url('/panel'));
     }

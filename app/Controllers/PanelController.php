@@ -46,7 +46,7 @@ class PanelController extends Controller
   {
     $id_usuario = ['id_usuario' => $id];
     $id_sesion = session()->get('id_usuario');
-    log_message('info', 'ID USUARIO URI   ' . $id_usuario['id_usuario']);
+   
     if ((string)$id_usuario['id_usuario'] ==  $id_sesion) {
       $usuarioModel = new usuario_Model();
       $data = [

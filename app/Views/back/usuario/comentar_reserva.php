@@ -6,6 +6,9 @@
     <div class="w-50">
         <?php $validation = \Config\Services::validation(); ?>
         <?php $session = session(); ?>
+        <h2> 
+            <?php echo($servicio_nombre); ?>
+        </h2> 
         <form class="bg-success-subtle p-2" action="<?php echo base_url('/panel/usuario/comentar_reserva/' . $id_sesion . '/' . $id_reserva) ?>" method="POST" id="formulario_comentario">
             <?= csrf_field(); ?>
             <?= csrf_field(); ?>
@@ -17,8 +20,7 @@
             <?php endif ?>
             <div class="mb-3">
                 <label for="floatingTextareaC" class="form-label">* Comentario</label>
-                <textarea class="form-control" name="comentario" placeholder="Comentario" id="floatingTextareaC"
-                    value="<?= old('comentario', $session->getFlashdata('comentario')) ?>">
+                <textarea class="form-control" name="comentario" placeholder="Comentario" id="floatingTextareaC" value="<?= old('comentario', $session->getFlashdata('comentario')) ?>">
             </textarea>
             <!-- Error comentario -->
              <?php if($validation->getError('comentario')) {?>
