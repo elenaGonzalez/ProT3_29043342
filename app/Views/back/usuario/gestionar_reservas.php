@@ -1,5 +1,10 @@
 <div class="container">
 <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+     <?php if(session()->getFlashdata('msg')):?>      
+         <div class="alert alert-warning">
+            <?= session()->getFlashdata('msg')?>
+        </div>
+         <?php endif;?> 
     <div class="container p-5">
         <h1>Gestionar Reservas</h1>
         <a class="btn btn-warning" href="<?php echo base_url('/panel') ?>" role="button">Panel</a>
@@ -13,6 +18,7 @@
                         <th scope="col">Fecha</th>
                         <th scope="col">Origen</th>
                         <th scope="col">Asientos</th>
+                        <th scope="col">Total</th>
                          <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -26,9 +32,9 @@
                                 <td><?= esc($reservas_item["fecha"]); ?></td>
                                 <td><?= esc($reservas_item["origen"]); ?></td>
                                 <td><?= esc($reservas_item["cantidad_asientos"]); ?></td>
+                                 <td>$ <?= esc($reservas_item["total"]); ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-primary">Editar</button>
-                                    <button type="button" class="btn btn-sm btn-danger">Eliminar</button>
+                                     <a class="btn btn-primary btn-sm" href="<?php echo base_url('/panel/admin/editar/reserva/' .$reservas_item["id_reserva"] . '/'. $reservas_item["id_servicio"]); ?>">Editar</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

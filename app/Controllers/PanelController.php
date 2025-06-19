@@ -33,7 +33,6 @@ class PanelController extends Controller
 
     $data = [
       'titulo' => 'Reservas de Usuario',
-      //'reservas' =>  $reservaModel-> where($id_usuario)->find()
       'reservas' => $reservaModel->getReservasConServicio($id_usuario)
     ];
 
@@ -112,66 +111,5 @@ class PanelController extends Controller
     echo view('front/navbar_view');
     echo view('back/usuario/perfil');
     echo view('front/footer_view');
-  }
-
-  public function form_comentario($id_u, $id_r)
-  {
-    $id_usuario = ['id_usuario' => $id_u];
-    $id_reserva = ['id_reserva' => $id_r];
-    $id_sesion = session()->get('id_usuario');
-
-    if ((string)$id_usuario['id_usuario'] ==  $id_sesion) {
-      $reservaModel = new reserva_Model();
-      $data = [
-        'titulo' => 'Comentar servicio',
-        'reserva' =>  $reservaModel->find($id_reserva)
-      ];
-
-      echo view('front/head_view', $data);
-      echo view('front/navbar_view');
-      echo view('back/usuario/comentar_reserva', $id_reserva);
-      echo view('front/footer_view');
-    } else {
-      return $this->response->redirect(base_url('/panel'));
-    }
-  }
-
-  public function formValidationComentario($id_u, $id_r)
-  {
-    $id_usuario = ['id_usuario' => $id_u];
-    $id_reserva = ['id_reserva' => $id_r];
-   
-
-    $input = $this->validate(
-      [
-        'comentario' => 'required|min_length[5]|max_length[250]',
-        'calificacion' => 'required|numeric|min_length[1]|max_length[1]'
-      ]
-    );
-    $reservaModel = new reserva_Model();
-   
-    if (!$input) {
-      $data = [
-        'titulo' => 'Comentar servicio',
-        'reserva' =>  $reservaModel->find($id_reserva)
-      ];
-
-      echo view('front/head_view', $data);
-      echo view('front/navbar_view');
-      echo view('back/usuario/comentar_reserva', $id_reserva);
-      echo view('front/footer_view', ['validation' => $this->validator]);
-
-    } else {
-    
-      $comentario = [
-        'id_reserva' => $id_reserva,
-        'comentario' => $this->request->getVar('comentario'),
-        'calificacion' => $this->request->getVar('calificacion')
-      ];
-      $reservaModel->save($comentario);
-
-      session()->setFlashdata('msg', 'Comentario agregado con exito');
-      return $this->response->redirect(base_url('/panel'));
-    }
   }
 }
