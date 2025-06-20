@@ -67,7 +67,7 @@ class ReservaController extends Controller
     } else {
 
       $servicio = $servicios->find($data['id_servicio']);
-      $total = (float)$servicio['costo'] * (float)$data['cantidad_asientos'];
+      $total = (float)$servicio['precio'] * (float)$data['cantidad_asientos'];
 
       $formReserva->save([
         'id_servicio' =>  $valorSeleccionado,
@@ -153,7 +153,7 @@ class ReservaController extends Controller
       $servicios = new servicio_Model();
       $servicio = $servicios->find($id_servicio);
 
-      $total = $servicio[0]['costo'] * $data['cantidad_asientos'];
+      $total = $servicio[0]['precio'] * $data['cantidad_asientos'];
 
       $reserva = [
         'id_reserva' => $id_reserva,

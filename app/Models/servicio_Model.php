@@ -6,7 +6,7 @@ class servicio_Model extends Model
 {
     protected $table = 'servicios';
     protected $primaryKey = 'id_servicio';
-    protected $allowedFields = ['titulo','descripcion','costo', 'iframe', 'created_at'];
+    protected $allowedFields = ['titulo','descripcion','precio', 'iframe', 'baja', 'created_at'];
 
 
  public function getServicios()

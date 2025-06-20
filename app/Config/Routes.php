@@ -49,6 +49,12 @@ $routes->get('/panel/admin/usuarios/update', 'AdminController::success', ['filte
 $routes->get('/panel/admin/usuarios/(:segment)/eliminar', 'AdminController::baja_usuario/$1', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/usuarios/(:segment)/reactivar', 'AdminController::reactivar_usuario/$1', ['filter'=> 'admin/*']);
 $routes->get('/panel/admin/logout', 'LoginController::logout');
-
 $routes->get('/panel/admin/editar/reserva/(:segment)/(:segment)', 'ReservaController::form_editar_reserva/$1/$2', ['filter'=> 'admin/*']);
 $routes->post('/panel/admin/editar_reserva/(:segment)/(:segment)', 'ReservaController::formValidationEditarReserva/$1/$2', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/servicios/(:segment)/editar', 'ServicioController::form_editar/$1', ['filter'=> 'admin/*']);
+$routes->post('/panel/admin/servicios/update/(:segment)', 'ServicioController::formValidation/$1', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/crear_servicio', 'ServicioController::form_servicio/$1', ['filter'=> 'admin/*']);
+$routes->post('/panel/admin/nuevo_servicio', 'ServicioController::formValidationServicio/$1', ['filter'=> 'admin/*']);
+
+$routes->get('/panel/admin/servicios/(:segment)/eliminar', 'ServicioController::baja_servicio/$1', ['filter'=> 'admin/*']);
+$routes->get('/panel/admin/servicios/(:segment)/reactivar', 'ServicioController::reactivar_servicio/$1', ['filter'=> 'admin/*']);
