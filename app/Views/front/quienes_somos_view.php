@@ -3,16 +3,11 @@
   <div id="packages" class="pt-5">
     <div class="row">
       <div class="col-lg">
-        <div class="card">
+        <div class="card d-flex">
           <img src="assets/img/gerente_general.jpg" class="card-img-top" alt="Gerente General">
           <div class="card-body">
             <h5 class="card-title text-bg-light">Mario Lozano</h5>
             <p class="card-text">Soy Gerente General de la Empresa Turismo Corrientes. Mi labor consiste en liderar al equipo, coordinar las operaciones estratégicas y asegurar que nuestros servicios superen las expectativas de nuestros clientes.</p>
-            <!-- Boton trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Ver mas
-            </button>
-            <!-- fin Boton trigger modal-->
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -40,19 +35,23 @@
             </div>
             <!-- fin Modal-->
           </div>
+          <!-- footer -->
+             <!-- Boton trigger modal -->
+            <div class="card-footer text-muted">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Ver mas
+            </button>
+            </div>
+            <!-- fin Boton trigger modal-->
+          <!-- fin footer -->
         </div>
       </div>
-      <div class="col-lg">
+      <div class="col-lg d-flex">
         <div class="card">
           <img src="assets/img/gerente_de_rrhh.jpg" class="card-img-top" alt="Gerente de RRHH">
           <div class="card-body">
             <h5 class="card-title text-bg-light">Mateo Rosas</h5>
             <p class="card-text">Soy Gerente General de Recursos Humanos. Desde mi rol, me encargo de gestionar el talento humano, promover un ambiente laboral positivo y alinear el desarrollo del personal con los objetivos de la empresa.</p>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              Ver mas
-            </button>
-
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -81,9 +80,17 @@
             </div>
             <!--fin Modal -->
           </div>
+          <!-- footer -->
+            <!-- Button trigger modal -->
+             <div class="card-footer text-muted">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Ver mas
+            </button>
+             </div>
+          <!-- fin footer -->
         </div>
       </div>
-      <div class="col-lg">
+      <div class="col-lg d-flex">
         <div class="card">
           <img src="assets/img/gerente_de_ventas.jpg" class="card-img-top" alt="Gerente de Ventas">
           <div class="card-body">
@@ -111,8 +118,13 @@
                 </div>
               </div>
             </div>
-            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a>
+           
           </div>
+          <!-- footer -->
+          <div class="card-footer text-muted">
+             <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ver mas</a>
+          </div>
+          <!--fin footer -->
         </div>
       </div>
     </div>

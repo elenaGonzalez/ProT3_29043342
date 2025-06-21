@@ -26,6 +26,33 @@ class reserva_Model extends Model
         return $query->getResultArray();
     }
 
+   //Para traer el nombre de servicio para las reservas de todos los usuarios
+  public function getComentariosBuscados($busqueda)
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre, usuarios.nombre as usuario_nombre, usuarios.apellido as usuario_apellido');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->join('usuarios', 'usuarios.id_usuario = reservas.id_usuario');
+        $builder->where('reservas.calificacion > 0');
+        $builder->like('reservas.comentario', $busqueda);
+        $builder->orLike('servicios.titulo', $busqueda);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }  
+
+  //Para traer comentarios según la cantidad del limit
+  public function getlimitReservasConServicios($limit=null, $start=null)
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre, usuarios.nombre as usuario_nombre, usuarios.apellido as usuario_apellido');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->join('usuarios', 'usuarios.id_usuario = reservas.id_usuario');
+        $builder->where('reservas.calificacion > 0');
+        $builder->limit($limit, $start);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
   //Para traer el nombre de servicio para las reservas de un usuario
   public function getReservasConServicio($id_usuario)
     {
@@ -37,7 +64,7 @@ class reserva_Model extends Model
         return $query->getResultArray();
     }
    
-    //
+    //Para traer los datos de una reserva, asociados con el nombre del servicio
     public function getReservaConServicio($id_reserva)
     {
         $builder = $this->db->table('reservas');

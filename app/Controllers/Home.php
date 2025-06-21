@@ -2,20 +2,35 @@
 
 namespace App\Controllers;
 
+use App\Models\reserva_Model;
+use App\Models\servicio_Model;
+
 class Home extends BaseController
 {
     public function index()
     {
-        $data['titulo']='Pagina principal';
+         $reservaModel = new reserva_Model();
+        $data = [
+            'titulo' => 'Comentarios',
+            'comentarios' => $reservaModel->getlimitReservasConServicios(5)
+        ];
+        log_message('info', 'Resultado con limit 5 '.$data['comentarios'][3]['comentario']);
+
+        $data['titulo'] = 'Pagina principal';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/principal_view');
         echo view('front/comentarios_index_view');
         echo view('front/footer_view');
     }
-     public function comentarios()
+    public function comentarios()
     {
-        $data['titulo']='Comentarios';
+        $reservaModel = new reserva_Model();
+        $data = [
+            'titulo' => 'Comentarios',
+            'comentarios' => $reservaModel->getReservasConServicios()
+        ];
+        
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/comentarios_view');
@@ -23,7 +38,7 @@ class Home extends BaseController
     }
     public function quienes_somos()
     {
-        $data['titulo']='Quienes somos';
+        $data['titulo'] = 'Quienes somos';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/quienes_somos_view');
@@ -31,7 +46,7 @@ class Home extends BaseController
     }
     public function acerca_de()
     {
-        $data['titulo']='Acerca de';
+        $data['titulo'] = 'Acerca de';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/acerca_de_view');
@@ -39,7 +54,7 @@ class Home extends BaseController
     }
     public function registro()
     {
-        $data['titulo']='Registro';
+        $data['titulo'] = 'Registro';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('back/usuario/registro');
@@ -47,7 +62,7 @@ class Home extends BaseController
     }
     public function login()
     {
-        $data['titulo']='Login';
+        $data['titulo'] = 'Login';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('back/usuario/login');
@@ -55,7 +70,12 @@ class Home extends BaseController
     }
     public function servicios()
     {
-        $data['titulo']='Servicios';
+        $serviciosModel = new servicio_Model();
+
+        $data = [
+            'titulo' => 'Servicios',
+            'servicios' => $serviciosModel->find()
+        ];
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/servicios_view');
@@ -63,15 +83,16 @@ class Home extends BaseController
     }
     public function contactos()
     {
-        $data['titulo']='Contactos';
+        $data['titulo'] = 'Contactos';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('back/usuario/contactos');
         echo view('front/footer_view');
     }
 
-     public function formValidation(){
-          // Obtén los datos del formulario
+    public function formValidation()
+    {
+        // Obtén los datos del formulario
         $data = $this->request->getPost();
 
         // Guarda los datos en la sesión (para pre-rellenar)
@@ -79,25 +100,26 @@ class Home extends BaseController
         foreach ($data as $key => $value) {
             $session->setFlashdata($key, $value);
         }
-         $valorSeleccionado = $data["servicio"];
-       
-         $input = $this->validate([
-          'nombre' => 'required|min_length[3]',
-          'apellido' => 'required|min_length[3]|max_length[25]',
-          'email' => 'required|min_length[4]|max_length[100]',
-          'celular' => 'required|numeric|min_length[10]|max_length[12]',
-          'consulta' => 'required|max_length[600]',
-         ]
+        $valorSeleccionado = $data["servicio"];
+
+        $input = $this->validate(
+            [
+                'nombre' => 'required|min_length[3]',
+                'apellido' => 'required|min_length[3]|max_length[25]',
+                'email' => 'required|min_length[4]|max_length[100]',
+                'celular' => 'required|numeric|min_length[10]|max_length[12]',
+                'consulta' => 'required|max_length[600]',
+            ]
         );
-        
-        if(!$input){
+
+        if (!$input) {
             $data['titulo'] = 'Contactos';
             echo view('front/head_view', $data);
             echo view('front/navbar_view');
             echo view('back/usuario/contactos');
             echo view('front/footer_view', ['validation' => $this->validator]);
-      }else{
-       /* A DESARROLLAR
+        } else {
+            /* A DESARROLLAR
        send_mail([
             'nombre' => $this->request->getVar('nombre'),
             'apellido' => $this->request->getVar('apellido'),
@@ -107,8 +129,26 @@ class Home extends BaseController
             'pass' => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
             
         ]);*/
-        session()->setFlashdata('msg', 'Gracias por tu mensaje. En breve te estaremos contactando!!');
-        return $this->response->redirect('./');
-      }
+            session()->setFlashdata('msg', 'Gracias por tu mensaje. En breve te estaremos contactando!!');
+            return $this->response->redirect('./');
+        }
+    }
+
+    public function buscar_comentarios()
+    {
+         $data = $this->request->getPost();
+         $comentarios = new reserva_Model();
+         $busqueda = $this->request->getVar('buscar');
+         $comentarios_a_buscar= $comentarios->getComentariosBuscados($busqueda);
+
+         $data = [
+            'titulo' => 'Comentarios que incluyen: '.$busqueda,
+            'comentarios' => $comentarios_a_buscar
+         ];
+         
+            echo view('front/head_view', $data);
+            echo view('front/navbar_view');
+            echo view('front/comentarios_view');
+            echo view('front/footer_view');
     }
 }

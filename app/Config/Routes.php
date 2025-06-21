@@ -17,6 +17,7 @@ $routes->post('/validar_contacto', 'Home::formValidation');
 $routes->get('/user', 'UserController::index');
 $routes->get('perfil', 'UserController::perfil');
 $routes->get('reservas', 'UserController::reservas');
+$routes->post('/buscar_comentarios', 'Home::buscar_comentarios');
 
 /*rutas del Registro de Usuarios */
 $routes->get('/registro', 'UserController::create');
