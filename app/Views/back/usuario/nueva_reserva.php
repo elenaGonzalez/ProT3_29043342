@@ -50,8 +50,8 @@
                 <!-- Fin Error -->
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput3" class="form-label">* Cantidad de Asientos</label>
-                <input type="number" class="form-control" id="exampleFormControlInput3"
+                <label for="exampleFormCInput3" class="form-label">* Cantidad de Asientos</label>
+                <input type="number" class="form-control" id="exampleFormCInput3"
                     name="cantidad_asientos" placeholder="cantidad de asientos" value="<?= old('cantidad_asientos', $session->getFlashdata('cantidad_asientos')) ?>">
                 <!-- Error -->
                 <?php if ($validation->getError('cantidad_asientos')) { ?>
@@ -62,8 +62,8 @@
                 <!-- Fin Error -->
             </div>
             <div class="mb-3">
-                <label for="exampleFormOrigen" class="form-label">* Origen</label>
-                <input type="text" class="form-control" id="exampleFormOrigen"
+                <label for="formOrigen" class="form-label">* Origen</label>
+                <input type="text" class="form-control" id="formOrigen"
                     name="origen" placeholder="Origen. Ej: Bajada del puente" value="<?= old('origen', $session->getFlashdata('origen')) ?>">
                     <!-- Error -->
                      <?php if($validation->getError('origen')) {?>

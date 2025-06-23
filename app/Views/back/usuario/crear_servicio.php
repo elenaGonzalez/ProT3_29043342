@@ -25,7 +25,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="formControlCrearS2" class="form-label">* Descripcion</label>
-                     <textarea class="form-control" name="descripcion" placeholder="Describa el servicio brindado" id="floatingTextareaS4" value="<?= old('descripcion', $session->getFlashdata('descripcion')) ?>">
+                     <textarea class="form-control" name="descripcion" placeholder="Describa el servicio brindado" id="formControlCrearS2" value="<?= old('descripcion', $session->getFlashdata('descripcion')) ?>">
                     </textarea>
                     <!-- Error -->
                     <?php if ($validation->getError('descripcion')) { ?>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="formControlCrearS3" class="form-label">* Precio</label>
-                   <input type="number" name="precio" step="0.01" min="0.00" max="999999.00" id="exampleFormInputS3" value="<?= old('precio', $session->getFlashdata('precio')) ?>">
+                   <input type="number" name="precio" step="0.01" min="0.00" max="999999.00" id="formControlCrearS3" value="<?= old('precio', $session->getFlashdata('precio')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('precio')) { ?>
                         <div class="text-danger mt-2">

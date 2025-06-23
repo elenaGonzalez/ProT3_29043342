@@ -42,7 +42,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput3" class="form-label">* Cantidad de asientos</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput4"
+                    <input type="number" class="form-control" id="exampleFormControlInput3"
                         name="cantidad_asientos" placeholder="Ej: 3" value="<?= esc($reserva_item["cantidad_asientos"]); ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('cantidad_asientos')) { ?>

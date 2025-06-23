@@ -14,8 +14,8 @@
              <?php if (!empty($servicio)): ?>
                  <?php foreach ($servicio as $servicio_item): ?>
                      <div class="mb-3">
-                         <label for="exampleFormInputS" class="form-label">* Titulo</label>
-                         <input type="text" class="form-control" id="exampleFormInputS" name="titulo" placeholder="Titulo" value="<?= esc($servicio_item["titulo"]); ?>">
+                         <label for="exampleFInputS" class="form-label">* Titulo</label>
+                         <input type="text" class="form-control" id="exampleFInputS" name="titulo" placeholder="Titulo" value="<?= esc($servicio_item["titulo"]); ?>">
                          <!-- Error -->
                          <?php if ($validation->getError('titulo')) { ?>
                              <div class="text-danger mt-2">
@@ -37,8 +37,8 @@
                     <?php } ?>
                 </div>
                  <div class="mb-3">
-                    <label for="exampleFormInputS3" class="form-label">* Precio</label>
-                    <input type="number" name="precio" step="0.01" min="0.00" max="999999.00" id="exampleFormInputS3" value="<?= esc($servicio_item["precio"]); ?>">
+                    <label for="exampleFInputS3" class="form-label">* Precio</label>
+                    <input type="number" name="precio" step="0.01" min="0.00" max="999999.00" id="exampleFInputS3" value="<?= esc($servicio_item["precio"]); ?>">
                      <?php if ($validation->getError('precio')) { ?>
                         <div class="text-danger mt-2">
                             <?= $error = $validation->getError('precio'); ?>

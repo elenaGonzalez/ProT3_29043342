@@ -14,7 +14,6 @@ class Home extends BaseController
             'titulo' => 'Comentarios',
             'comentarios' => $reservaModel->getlimitReservasConServicios(5)
         ];
-        log_message('info', 'Resultado con limit 5 '.$data['comentarios'][3]['comentario']);
 
         $data['titulo'] = 'Pagina principal';
         echo view('front/head_view', $data);

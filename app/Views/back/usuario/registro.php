@@ -12,8 +12,8 @@
                     <div class="alert alert-warning"><?= session()->getFlashdata('success'); ?></div>
                 <?php endif ?>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">* Nombre</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                    <label for="formControlInputR1" class="form-label">* Nombre</label>
+                    <input type="text" class="form-control" id="formControlRInput1"
                         name="nombre" placeholder="Nombre" value="<?= old('nombre', $session->getFlashdata('nombre')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('nombre')) { ?>
@@ -24,8 +24,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput2" class="form-label">* Apellido</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput2"
+                    <label for="formControlInputR2" class="form-label">* Apellido</label>
+                    <input type="text" class="form-control" id="formControlInputR2"
                         name="apellido" placeholder="Apellido" value="<?= old('apellido', $session->getFlashdata('apellido')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('apellido')) { ?>
@@ -36,8 +36,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput3" class="form-label">* Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput3"
+                    <label for="formControlInputR3" class="form-label">* Email</label>
+                    <input type="email" class="form-control" id="formControlInputR3"
                         name="email" placeholder="email@ejemplo.com" value="<?= old('email', $session->getFlashdata('email')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('email')) { ?>
@@ -48,8 +48,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput4" class="form-label">* Usuario</label>
-                    <input type="usuario" class="form-control" id="exampleFormControlInput4"
+                    <label for="formControlInput4" class="form-label">* Usuario</label>
+                    <input type="usuario" class="form-control" id="formControlInputR4"
                         name="usuario" placeholder="Nombre de usuario" value="<?= old('usuario', $session->getFlashdata('usuario')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('usuario')) { ?>
@@ -60,8 +60,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput5" class="form-label">* Contraseña</label>
-                    <input type="password" id="exampleFormControlInput5" class="form-control"
+                    <label for="formControlInputR5" class="form-label">* Contraseña</label>
+                    <input type="password" id="formControlInputR5" class="form-control"
                         name="pass" placeholder="Contraseña" value="<?= old('pass', $session->getFlashdata('pass')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('pass')) { ?>
@@ -72,8 +72,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput5" class="form-label">* Repetir Contraseña</label>
-                    <input type="password" id="exampleFormControlInput5" class="form-control"
+                    <label for="formControlInputR6" class="form-label">* Repetir Contraseña</label>
+                    <input type="password" id="formControlInputR6" class="form-control"
                         name="pass_confirm" placeholder="Repetir Contraseña" value="<?= old('pass_confirm', $session->getFlashdata('pass_confirm')) ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('pass_confirm')) { ?>

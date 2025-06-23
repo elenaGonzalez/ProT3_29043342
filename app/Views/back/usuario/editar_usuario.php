@@ -18,8 +18,8 @@
                 <?php if (!empty($usuario )): ?>
                      <?php foreach ($usuario as $usuario_item): ?>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">* Nombre</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput2"
+                    <label for="formControlInput1" class="form-label">* Nombre</label>
+                    <input type="text" class="form-control" id="formControlInput2"
                         name="nombre" placeholder="Nombre" value="<?= esc($usuario_item["nombre"]); ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('nombre')) { ?>
@@ -30,8 +30,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput2" class="form-label">* Apellido</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput3"
+                    <label for="formControlInput2" class="form-label">* Apellido</label>
+                    <input type="text" class="form-control" id="formControlInput2"
                         name="apellido" placeholder="Apellido" value="<?= esc($usuario_item["apellido"]); ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('apellido')) { ?>
@@ -42,8 +42,8 @@
                     <!-- Fin Error -->
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput3" class="form-label">* Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput4"
+                    <label for="formControlInput3" class="form-label">* Email</label>
+                    <input type="email" class="form-control" id="formControlInput3"
                         name="email" placeholder="email@ejemplo.com" value="<?= esc($usuario_item["email"]); ?>">
                     <!-- Error -->
                     <?php if ($validation->getError('email')) { ?>
