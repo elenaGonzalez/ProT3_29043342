@@ -185,11 +185,17 @@ class AdminController extends Controller
   {
     $data = $this->request->getPost();
     $reservas = new reserva_Model();
-    $busqueda = $this->request->getVar('buscar');
-    $buscar_por_fecha = $reservas->getReservasBuscadas($busqueda);
-
+    $busqueda = $this->request->getVar('buscar_admin');
+    $titulo = "Reservas";
+    log_message('info','tipo de dato '.gettype($busqueda));
+    if(empty($busqueda)){
+       $buscar_por_fecha = $reservas->getReservasConServicios();
+    }else{
+          $buscar_por_fecha = $reservas->getReservasBuscadas($busqueda);
+          $titulo = 'Reservas del día : ' . $busqueda;
+    }
     $data = [
-      'titulo' => 'Reservas para el dia : ' . $busqueda,
+      'titulo' => $titulo,
       'reservas' => $buscar_por_fecha
     ];
 

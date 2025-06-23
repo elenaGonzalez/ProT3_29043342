@@ -39,7 +39,7 @@
                             </tr>
                         <?php endforeach ?>
                     <?php else : ?>
-                        <td class="col-5">No hay usuarios</td>
+                        <td colspan="8">No hay reservas</td>
                         </tr>
                 </tbody>
             </table>

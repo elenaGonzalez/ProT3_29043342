@@ -46,7 +46,7 @@
                             </tr>
                         <?php endforeach ?>
                     <?php else : ?>
-                        <td class="col-5">No hay servicios</td>
+                        <td colspan="5">No hay servicios</td>
                         </tr>
                 </tbody>
             </table>

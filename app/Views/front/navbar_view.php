@@ -40,7 +40,7 @@
                 </li>
                 </ul>
                 <form class="d-flex" method="post" action="<?php echo base_url('/panel/admin/buscar_reservas'); ?>">
-                    <input class="form-control me-2" type="search" name="buscar" placeholder="🔍 Por Fecha o usuario" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="buscar_admin" placeholder="🔍 Por Fecha" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Reservas</button>
                 </form>
             <?php else: ?>
