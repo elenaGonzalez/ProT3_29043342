@@ -1,5 +1,6 @@
 <div class="p-5 d-flex align-items-center justify-content-center ">
     <div class="w-50">
+        
         <?php $validation = \Config\Services::validation(); ?>
          <?php $session = session(); ?>
         <form class="bg-success-subtle p-2" action="<?php echo base_url('/validar_contacto') ?>" method="POST" id="formulario_contacto">
@@ -38,11 +39,15 @@
             <div class="mb-3">
                 <label for="my_select" class="form-label"> Servicio</label>
                 <select class="form-select form-select-sm" aria-label="Small select example" name="servicio" id="my_select">
-                    <option selected>Seleccione Servicio deseado:</option>
-                    <option value="playa">Dia de Playa</option>
-                    <option value="esteros">Esteros del Ibera</option>
-                    <option value="empedrado">Empedrado</option>
-                    <option value="itati">Itati</option>
+                   <?php if(!empty($servicios) && is_array($servicios)): ?>
+                <?php foreach ($servicios as $servicios_item): ?>
+                      <?php if($servicios_item['baja'] == 'NO') :?>  
+                        <option value=<?php echo $servicios_item['titulo']; ?>><?php echo $servicios_item['titulo']; ?></option>
+                      <?php endif; ?>
+                      <?php endforeach ;?>
+                      <?php else: ?>
+                        <option>No hay servicios</option>
+                      <?php endif ; ?>
                 </select>
                 <p id="cs" class="text-danger"></p>
             </div>

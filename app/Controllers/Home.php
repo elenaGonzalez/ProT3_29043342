@@ -83,7 +83,12 @@ class Home extends BaseController
     }
     public function contactos()
     {
-        $data['titulo'] = 'Contactos';
+        $serviciosM = new servicio_Model();
+        $data =[
+            'titulo' => 'Contactos',
+             'servicios' => $serviciosM->find()
+        ];
+    
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('back/usuario/contactos');
@@ -119,19 +124,30 @@ class Home extends BaseController
             echo view('back/usuario/contactos');
             echo view('front/footer_view', ['validation' => $this->validator]);
         } else {
-            /* A DESARROLLAR
-       send_mail([
+            
+       $send_mail =[
             'nombre' => $this->request->getVar('nombre'),
             'apellido' => $this->request->getVar('apellido'),
-            'usuario' => $this->request->getVar('usuario'),
-            'servicio' => $this->request->getVar('servicio'),
             'email' => $this->request->getVar('email'),
-            'pass' => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
-            
-        ]);*/
-            session()->setFlashdata('msg', 'Gracias por tu mensaje. En breve te estaremos contactando!!');
+            'servicio' => $valorSeleccionado,
+            'celular' => $this->request->getVar('celular'),
+            'consulta' => $this->request->getVar('consulta')
+        ];
+          
+        $to = 'turismocorrientes@gmail.com';
+        $message = $send_mail['consulta'];
+
+        $email = \Config\Services::email();
+        $email->setTo($to); 
+        $email->setFrom($send_mail['email'], $send_mail['nombre'].' '. $send_mail['apellido'], null);
+        $email->setSubject('Turismo Corrientes. Servicio : '.$send_mail['servicio']);
+        $email->setMessage($message.'. Mi celular es :'.$send_mail['celular']);
+        
+        $email->send();
+
+        session()->setFlashdata('msg', 'Gracias por tu mensaje. En breve te estaremos contactando!!');
             return $this->response->redirect('./');
-        }
+    }
     }
 
     public function buscar_comentarios()

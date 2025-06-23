@@ -34,7 +34,6 @@ $routes->get('/panel/reservas/usuario/(:segment)', 'PanelController::reservas/$1
 $routes->get('/panel/usuario/(:segment)/editar', 'PanelController::form_editar/$1', ['filter'=> 'auth']);
 $routes->post('/panel/usuario/update/(:segment)', 'PanelController::formValidation/$1', ['filter'=> 'auth']);
 $routes->get('/panel/usuario/update', 'PanelController::success/$1', ['filter'=> 'auth']);
-
 $routes->get('/panel/usuario/comentar_reserva/(:segment)/(:segment)', 'ReservaController::form_comentario/$1/$2', ['filter'=> 'auth']);
 $routes->post('/panel/usuario/comentar_reserva/(:segment)/(:segment)', 'ReservaController::formValidationComentario/$1/$2', ['filter'=> 'auth']);
 
