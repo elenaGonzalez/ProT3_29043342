@@ -233,7 +233,6 @@ class ReservaController extends Controller
         'calificacion' => $this->request->getVar('calificacion')
       ];
       $reservaModel->save($comentario);
-      log_message('info', 'despues de guardar el comentario ' . $id_reserva['id_reserva']);
       session()->setFlashdata('msg', 'Comentario agregado con exito');
       return $this->response->redirect(base_url('/panel'));
     }
