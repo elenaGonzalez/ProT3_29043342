@@ -52,6 +52,20 @@ class reserva_Model extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+  
+  // Para el search del admin
+  public function getReservasBuscadas($busqueda)
+    {
+        $builder = $this->db->table('reservas');
+        $builder->select('reservas.*, servicios.titulo as servicio_nombre, usuarios.nombre as usuario_nombre, usuarios.apellido as usuario_apellido');
+        $builder->join('servicios', 'servicios.id_servicio = reservas.id_servicio');
+        $builder->join('usuarios', 'usuarios.id_usuario = reservas.id_usuario');
+        $builder->where('reservas.calificacion > 0');
+        $builder->where('reservas.fecha', $busqueda);
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
 
   //Para traer el nombre de servicio para las reservas de un usuario
   public function getReservasConServicio($id_usuario)

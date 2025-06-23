@@ -180,4 +180,22 @@ class AdminController extends Controller
       return $this->response->redirect('./');
     }
   }
+
+  public function buscar_reservas()
+  {
+    $data = $this->request->getPost();
+    $reservas = new reserva_Model();
+    $busqueda = $this->request->getVar('buscar');
+    $buscar_por_fecha = $reservas->getReservasBuscadas($busqueda);
+
+    $data = [
+      'titulo' => 'Reservas para el dia : ' . $busqueda,
+      'reservas' => $buscar_por_fecha
+    ];
+
+    echo view('front/head_view', $data);
+    echo view('front/navbar_view');
+    echo view('back/usuario/gestionar_reservas');
+    echo view('front/footer_view');
+  }
 }

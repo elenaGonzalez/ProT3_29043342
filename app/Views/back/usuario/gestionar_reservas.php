@@ -6,7 +6,7 @@
         </div>
          <?php endif;?> 
     <div class="container p-5">
-        <h1>Gestionar Reservas</h1>
+        <h1><?php echo $titulo ;?></h1>
         <a class="btn btn-warning" href="<?php echo base_url('/panel') ?>" role="button">Panel</a>
         <div class="table-responsive">
             <table class="table table-responsive-md table-success table-striped">

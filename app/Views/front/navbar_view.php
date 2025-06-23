@@ -26,7 +26,7 @@
                     </li>
             </ul>
             <form class="d-flex" method="post" action="<?php echo base_url('/buscar_comentarios'); ?>">
-                <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar comentario" aria-label="Search">
+                <input class="form-control me-2" type="search" name="buscar" placeholder="🔍 Buscar comentario" aria-label="Search">
                 <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
         <?php else: ?>
@@ -39,7 +39,7 @@
                     <a class="nav-link" href="<?php echo base_url('logout'); ?>">Logout</a>
                 </li>
                 </ul>
-                <form class="d-flex" method="post" action="<?php echo base_url('/buscar_comentarios'); ?>">
+                <form class="d-flex" method="post" action="<?php echo base_url('/panel/admin/buscar_reservas'); ?>">
                     <input class="form-control me-2" type="search" name="buscar" placeholder="🔍 Por Fecha o usuario" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Reservas</button>
                 </form>
@@ -67,7 +67,7 @@
                 </li>
                 </ul>
                 <form class="d-flex" method="post" action="<?php echo base_url('/buscar_comentarios'); ?>">
-                    <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar comentario" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="buscar" placeholder="🔍 Buscar comentario" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Buscar</button>
                 </form>
             <?php endif; ?>
