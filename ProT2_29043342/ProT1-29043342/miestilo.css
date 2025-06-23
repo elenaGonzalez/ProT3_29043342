@@ -1,0 +1,115 @@
+body {
+    background-color: #eaf2e3;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.centrado {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+header {
+    background-color: #2A7B9B;
+    background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.contenido{
+    margin: 3%;
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 2em;
+}
+
+section {
+    padding: 20px;
+}
+
+.img {
+    border-style: outset;
+    border-color: #69bd45;
+    border: solid 1rem;
+}
+
+.img:hover {
+    border-color: #69bd45;
+    content: "Playa";
+    opacity: 0.80;
+}
+
+footer {
+    background-color: #69bd45; 
+    color: #fff;
+    padding: 20px 0; 
+}
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+}
+
+.footer-container ul{
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    margin: 0;
+    padding: 0;
+}
+
+.redes li{
+    display: block;
+    list-style: none;
+}
+
+.redes li:hover{
+    background-color: #fbfcfb;
+}
+
+.importante{
+    font-size: large;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #69bd45;
+    align-self: center;
+    width: 100%;
+}
+
+nav .menu ul {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: block;
+    list-style: none;
+}
+
+nav .menu ul li a {
+    text-decoration: none;
+}
+
+nav li:hover {
+    background-color: rgb(208, 240, 93);
+}
+
+[id="logo"]::before {
+    content: url('map_navigation_icon.png');
+}
+
+
+    
+   
